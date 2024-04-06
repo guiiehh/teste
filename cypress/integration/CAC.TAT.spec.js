@@ -131,7 +131,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
   })
 
   //Usando alias = renomeando um arquivo
-  it.only ('seleciona um arquivo utilizando uma fixture para a qual foi dada um alias', function(){
+  it ('seleciona um arquivo utilizando uma fixture para a qual foi dada um alias', function(){
     cy.fixture('example.json').as('sampleFile') //Nome que você deu ao arquivo
     cy.get('input[type ="file"]')
       .selectFile('@sampleFile')
