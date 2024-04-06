@@ -155,4 +155,8 @@ it('acessa a página da política de privacidade removendo o target e então cli
   cy.contains('Talking About Testing').should('be.visible')
 })
 
+
+//Optei por não estudar o módulo de 3 aulas de dispositivos móveis
+
+
 }) 
