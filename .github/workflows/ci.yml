@@ -1,14 +1,24 @@
-# Arquivo do CI (Continuos Integrations). Sempre que ouver um git push ele será disparado. 
+# Arquivo do CI (Continuos Integrations). Sempre que ouver um git push (de qualquer branche) ele será disparado. 
 
 name: End-to-end tests 🧪
 on: [push]
 jobs:
-  cypress-run:
+  cypress-run: 
     runs-on: ubuntu-20.04
     steps:
+     ##Significa que vai baixar o código no github:
       - name: Checkout
         uses: actions/checkout@v2
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v2
+
+
+
+
+## Passo a passo:
+  ##git add .
+  ##git commit -m "Create cypress project"
+  ##git branch
+  ##git push origin main 
