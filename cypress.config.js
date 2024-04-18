@@ -5,7 +5,8 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    pluginsFile: false,
+    baseUrl:'./src/index.html',
+    // pluginsFile: false,
     viewportHeight: 880,
     viewportWidth: 1280,
   },
