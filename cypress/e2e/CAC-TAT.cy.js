@@ -19,6 +19,7 @@ describe('Central de Atendimento ao Cliente TAT', function () {
     cy.get('input[id="lastName"]').should('be.visible').type(form.lastName).should('have.value', form.lastName)
     cy.get('input[id="email"]').should('be.visible').type(form.email).should('have.value', form.email)
     cy.get('textarea[id="open-text-area"]').should('be.visible').type(form.howWeMayHelp).should('have.value', form.howWeMayHelp)
+    cy.get('button[type="submit"]').should('be.visible').click()
 
   });
 });
