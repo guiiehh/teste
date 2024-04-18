@@ -5,16 +5,16 @@ const form = {
   howWeMayHelp: 'Testing message...',
 };
 
-describe('Central de Atendimento ao Cliente TAT', function () {
+describe('Central de Atendimento ao Cliente TAT', () => {
   beforeEach(() => {
     cy.visit('./src/index.html');
   });
 
-  it('verifica o título da aplicação', function () {
+  it('verifica o título da aplicação', () => {
     cy.title().should('be.equal', 'Central de Atendimento ao Cliente TAT');
   });
 
-  it('preenche os campos obrigatórios e envia o formulário', function () {
+  it('preenche os campos obrigatórios e envia o formulário', () => {
     cy.get('input[id="firstName"]')
       .should('be.visible')
       .type(form.name)
