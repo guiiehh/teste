@@ -142,18 +142,18 @@ describe('Central de Atendimento ao Cliente TAT', () => {
 
   it.only('marca cada tipo de atendimento', () => {
     cy.get('input[type="radio"][value="feedback"]')
-      .check(form.service.feedback)
+      .check()
       .should('be.checked')
-      .should('have.value', form.service.feedback)
+
 
     cy.get('input[type="radio"][value="elogio"]')
-      .check(form.service.elogio)
+      .check()
       .should('be.checked')
-      .should('have.value', form.service.elogio)
+
 
     cy.get('input[type="radio"][value="ajuda"]')
-      .check(form.service.ajuda)
+      .check()
       .should('be.checked')
-      .should('have.value', form.service.ajuda)
+
   })
 })
