@@ -59,7 +59,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
       .should('have.value', '')
   })
 
-  it('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', () => {
+  it.only('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', () => {
     cy.get('input[id="firstName"]')
       .should('be.visible')
       .type(form.name)
@@ -72,7 +72,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
       .should('be.visible')
       .type(form.email)
       .should('have.value', form.email)
-    cy.get('input[id="phone-checkbox"]').should('be.visible').click()
+    cy.get('input[id="phone-checkbox"]').should('be.visible').check()
     cy.get('textarea[id="open-text-area"]')
       .should('be.visible')
       .type(form.howWeMayHelp)
@@ -120,6 +120,8 @@ describe('Central de Atendimento ao Cliente TAT', () => {
 
   it('envia o formulário com sucesso usando um comando customizado', () => {
     cy.fillMandatoryFieldsAndSubmit()
+    cy.contains('button', 'Enviar').should('be.visible').click()
+    cy.get('span[class="success"]').should('be.visible')
   })
 
   it(`seleciona um produto (YouTube) por seu texto`, () => {
@@ -155,14 +157,5 @@ describe('Central de Atendimento ao Cliente TAT', () => {
       .last()
       .uncheck()
       .should('not.be.checked')
-  })
-  it.only('xibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', () => {
-    cy.get('input[id="phone-checkbox"]')
-      .should('be.visible')
-      .check()
-      .should('be.checked')
-    cy.fillMandatoryFieldsAndSubmit()
-    cy.contains('button', 'Enviar').should('be.visible').click()
-    cy.get('span[class="error"]').should('be.visible')
   })
 })
