@@ -32,12 +32,12 @@ describe('Central de Atendimento ao Cliente TAT', () => {
       .should('be.visible')
       .type(form.howWeMayHelp, { delay: 0 })
       .should('have.value', form.howWeMayHelp)
-    cy.get('button[type="submit"]').should('be.visible').click()
+    cy.contains('button','Enviar').should('be.visible').click()
     cy.get('span[class="success"]').should('be.visible')
   })
 
   it('exibe mensagem de erro ao submeter o formulário com um email com formatação inválida ', () => {
-    cy.get('button[type="submit"]').should('be.visible').click()
+    cy.contains('button','Enviar').should('be.visible').click()
     cy.get('span[class="error"]').should('be.visible')
   })
 
@@ -66,7 +66,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
       .should('be.visible')
       .type(form.howWeMayHelp)
       .should('have.value', form.howWeMayHelp)
-    cy.get('button[type="submit"]').should('be.visible').click()
+    cy.contains('button','Enviar').should('be.visible').click()
     cy.get('span[class="error"]').should('be.visible')
   })
 
@@ -100,11 +100,11 @@ describe('Central de Atendimento ao Cliente TAT', () => {
       .type(form.howWeMayHelp)
       .should('have.value', form.howWeMayHelp)
 
-    // cy.get('button[type="submit"]').should('be.visible').click();
+    // cy.contains('button','Enviar').should('be.visible').click();
   })
 
   it('exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios', () => {
-    cy.get('button[type="submit"]').should('be.visible').click()
+    cy.contains('button','Enviar').should('be.visible').click()
   })
 
   it('envia o formulário com sucesso usando um comando customizado', () => {
