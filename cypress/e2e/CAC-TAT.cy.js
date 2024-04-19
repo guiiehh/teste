@@ -42,6 +42,31 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   });
 
   it('somente números são aceitos', () => {
-    cy.get('#phone').should('be.visible').type(form.email).should('have.value', '');
+    cy.get('#phone')
+      .should('be.visible')
+      .type(form.email)
+      .should('have.value', '');
+  });
+
+  it('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', () => {
+    cy.get('input[id="firstName"]')
+      .should('be.visible')
+      .type(form.name)
+      .should('have.value', form.name);
+    cy.get('input[id="lastName"]')
+      .should('be.visible')
+      .type(form.lastName)
+      .should('have.value', form.lastName);
+    cy.get('input[id="email"]')
+      .should('be.visible')
+      .type(form.email)
+      .should('have.value', form.email);
+    cy.get('input[id="phone-checkbox"]').should('be.visible').click();
+    cy.get('textarea[id="open-text-area"]')
+      .should('be.visible')
+      .type(form.howWeMayHelp)
+      .should('have.value', form.howWeMayHelp);
+    cy.get('button[type="submit"]').should('be.visible').click();
+    cy.get('span[class="error"]').should('be.visible');
   });
 });
