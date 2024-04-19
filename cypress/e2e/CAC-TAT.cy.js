@@ -2,6 +2,7 @@ const form = {
   name: 'John',
   lastName: 'Doe',
   email: 'john.doe@email.com',
+  number: '123456789',
   howWeMayHelp: 'Testing message...',
 };
 
@@ -38,5 +39,9 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   it('exibe mensagem de erro ao submeter o formulário com um email com formatação inválida ', () => {
     cy.get('button[type="submit"]').should('be.visible').click();
     cy.get('span[class="error"]').should('be.visible');
+  });
+
+  it('somente números são aceitos', () => {
+    cy.get('#phone').should('be.visible').type(form.email).should('have.value', '');
   });
 });
