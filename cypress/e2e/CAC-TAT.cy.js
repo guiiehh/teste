@@ -69,4 +69,37 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.get('button[type="submit"]').should('be.visible').click();
     cy.get('span[class="error"]').should('be.visible');
   });
+
+  it('preenche e limpa os campos nome, sobrenome, email e telefone', () => {
+    cy.get('input[id="firstName"]')
+      .should('be.visible')
+      .type(form.name)
+      .should('have.value', form.name)
+      .clear()
+      .should('have.value', '');
+    cy.get('input[id="lastName"]')
+      .should('be.visible')
+      .type(form.lastName)
+      .should('have.value', form.lastName)
+      .clear()
+      .should('have.value', '');
+    cy.get('input[id="email"]')
+      .should('be.visible')
+      .type(form.email)
+      .should('have.value', form.email)
+      .clear()
+      .should('have.value', '');
+    cy.get('#phone')
+      .should('be.visible')
+      .type(form.number)
+      .should('have.value', form.number)
+      .clear()
+      .should('have.value', '');
+    cy.get('textarea[id="open-text-area"]')
+      .should('be.visible')
+      .type(form.howWeMayHelp)
+      .should('have.value', form.howWeMayHelp);
+
+    // cy.get('button[type="submit"]').should('be.visible').click();
+  });
 });
