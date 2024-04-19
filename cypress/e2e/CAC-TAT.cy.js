@@ -139,13 +139,21 @@ describe('Central de Atendimento ao Cliente TAT', () => {
       .check(form.service.feedback)
       .should('have.value', form.service.feedback)
   })
-
-  it.only('marca cada tipo de atendimento', () => {
+  it('marca cada tipo de atendimento', () => {
     cy.get('input[type="radio"]')
       .should('have.length', 3)
       .each(($radio) => {
         cy.wrap($radio).check()
         cy.wrap($radio).should('be.checked')
       })
+  })
+
+  it('marca ambos checkboxes, depois desmarca o último', () => {
+    cy.get('input[type="checkbox"]')
+      .check()
+      .should('be.checked')
+      .last()
+      .uncheck()
+      .should('not.be.checked')
   })
 })
