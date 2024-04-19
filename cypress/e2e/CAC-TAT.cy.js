@@ -10,6 +10,11 @@ export const form = {
     mentoria: 'mentoria',
     youtube: 'youtube',
   },
+  service: {
+    ajuda: 'ajuda',
+    elogio: 'elogio',
+    feedback: 'feedback',
+  },
 }
 
 describe('Central de Atendimento ao Cliente TAT', () => {
@@ -120,14 +125,18 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   it(`seleciona um produto (YouTube) por seu texto`, () => {
     cy.get('#product').select('YouTube').should('have.value', 'youtube')
   })
-
   it(`seleciona um produto (Mentoria) por seu valor (value)`, () => {
     cy.get('#product')
       .select(form.product.mentoria)
       .should('have.value', form.product.mentoria)
   })
-
   it(`seleciona um produto (Blog) por seu índice`, () => {
     cy.get('#product').select(1).should('have.value', form.product.blog)
+  })
+
+  it.only('marca o tipo de atendimento "Feedback"', () => {
+    cy.get('input[type="radio"]')
+      .check(form.service.feedback)
+      .should('have.value', form.service.feedback)
   })
 })
