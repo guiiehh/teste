@@ -186,4 +186,10 @@ describe('Central de Atendimento ao Cliente TAT', () => {
         expect($input[0].files[0].name).to.equal('example.json')
       })
   })
+
+  it.only('verifica que a política de privacidade abre em outra aba sem a necessidade de um clique', () => {
+    cy.get('#privacy a')
+      .should('be.visible')
+      .should('have.attr', 'target', '_blank')
+  })
 })
