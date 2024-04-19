@@ -17,21 +17,23 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   it('preenche os campos obrigatórios e envia o formulário', () => {
     cy.get('input[id="firstName"]')
       .should('be.visible')
-      .type(form.name)
+      .type(form.name, {delay:0})
       .should('have.value', form.name);
     cy.get('input[id="lastName"]')
       .should('be.visible')
-      .type(form.lastName)
+      .type(form.lastName, {delay:0})
       .should('have.value', form.lastName);
     cy.get('input[id="email"]')
       .should('be.visible')
-      .type(form.email)
+      .type(form.email, {delay:0})
       .should('have.value', form.email);
     cy.get('textarea[id="open-text-area"]')
       .should('be.visible')
-      .type(form.howWeMayHelp)
+      .type(form.howWeMayHelp, {delay:0})
       .should('have.value', form.howWeMayHelp);
     cy.get('button[type="submit"]').should('be.visible').click();
     cy.get('span[class="success"]').should('be.visible');
   });
+
+
 });
