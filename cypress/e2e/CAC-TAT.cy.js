@@ -156,4 +156,13 @@ describe('Central de Atendimento ao Cliente TAT', () => {
       .uncheck()
       .should('not.be.checked')
   })
+  it.only('xibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', () => {
+    cy.get('input[id="phone-checkbox"]')
+      .should('be.visible')
+      .check()
+      .should('be.checked')
+    cy.fillMandatoryFieldsAndSubmit()
+    cy.contains('button', 'Enviar').should('be.visible').click()
+    cy.get('span[class="error"]').should('be.visible')
+  })
 })
