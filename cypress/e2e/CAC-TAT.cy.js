@@ -116,4 +116,8 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   it('envia o formulário com sucesso usando um comando customizado', () => {
     cy.fillMandatoryFieldsAndSubmit()
   })
+
+  it(`seleciona um produto (YouTube) por seu texto`, () => {
+    cy.get('#product').select('YouTube').should('have.value', 'youtube')
+  })
 })
