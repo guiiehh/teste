@@ -120,4 +120,10 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   it(`seleciona um produto (YouTube) por seu texto`, () => {
     cy.get('#product').select('YouTube').should('have.value', 'youtube')
   })
+
+  it(`seleciona um produto (Mentoria) por seu valor (value)`, () => {
+    cy.get('#product')
+      .select(form.product.mentoria)
+      .should('have.value', form.product.mentoria)
+  })
 })
