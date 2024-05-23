@@ -1,0 +1,12 @@
+name: End-to-end tests 🧪 #Nome da pipeline
+on: [push] #esse pipeline será disparado sempre que houver um push de qualquer branch
+jobs:
+  cypress-run: #nome do Job
+    runs-on: ubuntu-20.04
+    steps: #Passos da execução
+      - name: Checkout
+        uses: actions/checkout@v2
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
