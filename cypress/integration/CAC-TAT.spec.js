@@ -61,7 +61,7 @@ describe('Central de Atendimento ao Cliente TAT', ()=> {
         cy.get('#open-text-area').clear().should('have.value', '')
     })
 
-    it.only('exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios', function(){
+    it('exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios', function(){
         cy.contains('button', 'Enviar').click()
         cy.get('.error').should('be.visible')
     })
@@ -74,5 +74,21 @@ describe('Central de Atendimento ao Cliente TAT', ()=> {
     it('Usar o comando contains() para realizar os testes de login no botao de submit', function(){
         cy.get('div').contains('Nome').type('Gabriel Vitor') //exemplo de teste
         cy.contains('button', 'Enviar').click()
+    })
+
+    it('Seleciona um produto(Youtube) por seu texto',function(){
+        cy.get('select').select('YouTube').should('have.value', 'youtube') //buscar o elemento pelo seu texto e verificar a sua tag value
+    })
+
+    it('seleciona um produto (Mentoria) por seu valor (value)', function(){
+        cy.get('select').select('mentoria').should('have.value', 'mentoria') //buscar pela tag value ao inves do texto e verificar com a tag value
+    })
+
+    it('seleciona um produto (Blog) por seu índice', function(){
+        cy.get('select').select(1).should('have.value', 'blog') //colocar os elementos como um array e percorrer como um vetor buscando o indice
+    })
+
+    it.only('Testar o comando personalizado para a categoria Produto', function(){
+        cy.fillMandatoryFieldsofProduct()
     })
   })
